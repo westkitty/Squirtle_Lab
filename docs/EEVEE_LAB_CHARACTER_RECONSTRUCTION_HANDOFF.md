@@ -998,3 +998,492 @@ Preserve these performance principles:
 - no giant dependency stack
 
 Instrument enough state in tests/debug hooks to prove lifecycle behavior.
+
+---
+
+# 23. Required testing and verification
+
+Do not call the project complete because the page opens.
+
+Port the reference project's verification philosophy.
+
+## 23.1 Focused unit/contract tests
+
+Create/port focused tests covering at minimum:
+
+- actor core
+- physical interaction system
+- behavior/memory scheduler
+- multi-character manager
+- habitat/persistence state
+- room manager lifecycle and doors
+- transformation/ability system
+- living world/weather/audio contracts
+- expansion lifecycle across all 50 rooms
+
+## 23.2 Expansion lifecycle proof
+
+The expansion test must, using real project code where practical:
+
+- construct all 50 rooms
+- tick/update each room
+- enter/exit through real door semantics
+- activate all 36 expedition habitat setpieces
+- collect/fire all 36 expedition mementos
+- activate all 4 regional hub curios
+- apply narrative stages
+- apply at least one ability mutation per relevant class
+- verify regional consequence persistence
+- verify old/core save keys survive migrations
+- verify scene/resource cleanup after dispose
+- verify repeated rebuild resource counts remain stable
+- verify required doors remain reachable
+
+## 23.3 Broad browser journey
+
+Use Playwright or an equivalent real browser harness.
+
+The broad journey must cover the meaningful equivalents of:
+
+- model/star load
+- all nine aspect slots
+- alternate material mode
+- petting
+- feeding
+- brushing
+- toy interaction
+- loaf/rest
+- derp/comic mode
+- dance/disco
+- call
+- Roomba/comic interaction equivalent
+- actor movement
+- multi-character slice
+- room navigation
+- room disposal
+- transformation/aspect ceremony
+- environmental ability
+- living-world weather/time
+- photo mode
+- Moment score
+- Chill Mode
+- Stone Dash steering/jump/scoring
+- persistence reload
+- expedition navigation
+- region transitions
+- responsive drawers
+
+Require zero uncaught page errors and zero unexplained console errors.
+
+The reference project reached 95/95 browser checks after its adaptive-HUD pass. Do not fetishize the number, but do not reduce coverage. Port every meaningful protected journey and add checks where the new character adaptation introduces risk.
+
+## 23.4 Responsive viewport matrix
+
+Run the browser journey or focused UI geometry checks against at least:
+
+- phone portrait
+- phone landscape
+- tablet portrait
+- tablet landscape
+- wide desktop
+
+Assert:
+
+- center remains clear when controls are closed
+- no horizontal document overflow
+- drawer is inside viewport
+- drawer contents are scrollable
+- touch targets are usable
+- safe areas are respected
+
+## 23.5 Manual rendered visual QA
+
+The reference project still recorded manual visual QA of some expansion/responsive compositions as unverified.
+
+Do better in the new project if the runtime permits.
+
+Capture and inspect representative screenshots from:
+
+- central hub
+- one core habitat
+- one room from each of four expedition regions
+- phone portrait
+- phone landscape
+- tablet portrait
+- tablet landscape
+- desktop
+- photo mode
+- transformation/aspect ceremony
+- arcade mode
+
+Do not claim visual verification if you did not actually inspect rendered output.
+
+---
+
+# 24. Acceptance criteria
+
+The project is not complete until all applicable items below are true.
+
+## Structural parity
+
+- [ ] Separate destination project exists.
+- [ ] Original reference repository remains untouched.
+- [ ] Static browser experience works without a build step.
+- [ ] One central hub exists.
+- [ ] Nine core habitats exist.
+- [ ] Four expedition hubs exist.
+- [ ] Thirty-six expedition habitats exist.
+- [ ] Total room count is 50.
+- [ ] Declarative expansion registry works.
+- [ ] One-heavy-room lifecycle is preserved.
+
+## Character parity
+
+- [ ] Supplied star is the visual and behavioral center of the experience.
+- [ ] Nine gameplay form/aspect slots exist.
+- [ ] No slot falsely claims non-canonical material as canon.
+- [ ] Personality/memory/reaction tables are star-specific.
+- [ ] Direct physical interactions work.
+- [ ] Sleep, rare moments, bonded gestures, and autonomous behavior work.
+- [ ] Multi-character/echo vertical slice exists.
+- [ ] Transformation/aspect ceremony works.
+- [ ] Environmental abilities work in core and expedition rooms.
+
+## World parity
+
+- [ ] Core habitats have unique geometry, lighting, story, mementos, stages, and setpieces.
+- [ ] Expedition habitats have unique geometry, lighting, weather, ambient life, mementos, stages, variants, and setpieces.
+- [ ] Cross-room consequences persist.
+- [ ] Region transitions are distinct and Reduced-Motion aware.
+- [ ] Dreamlike region has one learnable impossible rule per room.
+- [ ] World state reconstructs from semantic save data.
+
+## Feature parity
+
+- [ ] Camera presets/focus/reset/zoom work.
+- [ ] Interaction wheel works.
+- [ ] Lore/Journal works.
+- [ ] Photo mode works.
+- [ ] Moment/observation score works.
+- [ ] Chill Mode works.
+- [ ] Alternate material mode works.
+- [ ] Procedural audio works.
+- [ ] Living-world clock/weather/ambient life works.
+- [ ] Rethemed Stone Dash works.
+- [ ] Versioned persistence works.
+
+## Responsive/accessibility parity
+
+- [ ] Phone portrait is usable.
+- [ ] Phone landscape is usable.
+- [ ] Tablet portrait is usable.
+- [ ] Tablet landscape is usable.
+- [ ] Desktop/ultrawide is usable.
+- [ ] No horizontal page overflow.
+- [ ] Safe areas are honored.
+- [ ] Keyboard focus is visible.
+- [ ] Controls are keyboard reachable.
+- [ ] Touch targets are usable.
+- [ ] Reduced Motion is honored.
+- [ ] Escape/back order is deterministic.
+
+## Lifecycle/performance parity
+
+- [ ] Character models are not repeatedly reloaded on room changes.
+- [ ] No competing animation loops exist.
+- [ ] No uncontrolled AudioContexts exist.
+- [ ] Room-owned resources dispose cleanly.
+- [ ] Shared materials do not leak animated state.
+- [ ] Repeated room rebuilds have stable resource counts.
+- [ ] Expansion doors are reachable.
+
+## Validation parity
+
+- [ ] Focused contract tests pass.
+- [ ] Expansion lifecycle test passes all 50 rooms.
+- [ ] Broad browser journey passes.
+- [ ] Responsive viewport matrix passes.
+- [ ] No unexplained browser console/page errors remain.
+- [ ] Rendered visual QA is either completed or explicitly reported as unverified.
+
+## Content cleanliness
+
+- [ ] No accidental Eevee/Pokemon strings remain in user-facing content unless explicitly intended.
+- [ ] No accidental Eevee/Pokemon model assets remain unless explicitly intended and authorized.
+- [ ] New asset provenance is documented.
+- [ ] New save key cannot collide with Eevee Lab.
+
+---
+
+# 25. Required workflow
+
+Execute in this order.
+
+## Phase A - Forensic reference read
+
+1. Inspect repository state and exact current branch/commit.
+2. Read `OPERATIONAL_STATE.md` completely.
+3. Inventory runtime files, assets, tests, and docs.
+4. Record protected behaviors and known unverified areas.
+5. Confirm reference source identity before building.
+
+## Phase B - Character intake
+
+1. Parse all material supplied with `STAR_CHARACTER`.
+2. Separate confirmed character facts from inference.
+3. Identify available model/image assets.
+4. Inspect asset rights/provenance information supplied by the user.
+5. Build the Character Adaptation Matrix.
+6. Decide the nine gameplay aspects.
+7. Mark each aspect canonical or gameplay-only.
+
+Do not ask the user to repeat character information already present in the message/files.
+
+## Phase C - Destination bootstrap
+
+1. Create/use a separate destination.
+2. Copy only the architecture/code/assets that are lawful and appropriate to reuse.
+3. Rename project identity, save keys, UI strings, metadata, and documentation.
+4. Preserve no-build static deployment.
+5. Add/update project operational state for the new project.
+
+## Phase D - Star asset integration
+
+1. Add supplied star assets.
+2. Build rig/material/animation manifest.
+3. Normalize scale/origin/orientation only as needed.
+4. Establish one asset-loading path.
+5. Implement aspect switching without repeated asset loads.
+6. Prove the base star renders before large content work.
+
+## Phase E - Character simulation parity
+
+Port/adapt:
+
+1. actor core
+2. physical interaction
+3. behavior/memory
+4. relationship/familiarity
+5. sleep and rare moments
+6. multi-character slice
+7. transformation/aspect ceremony
+8. environmental abilities
+
+Add focused tests as each ownership boundary lands.
+
+## Phase F - Core Habitat House
+
+1. Re-author central hub.
+2. Build nine character-specific core habitats.
+3. Implement topology/doors.
+4. Implement narrative stages.
+5. Implement placeables/history/traces.
+6. Implement native setpieces and ability targets.
+7. Verify lifecycle/disposal before expansions.
+
+## Phase G - Living world and presentation
+
+1. cel/toon visual unification
+2. alternate material mode
+3. habitat clock
+4. weather
+5. ambient life
+6. vistas
+7. procedural audio
+8. camera controls
+9. photo mode/Moment score
+10. Chill Mode
+
+## Phase H - Four expedition regions
+
+1. Build declarative expansion registry.
+2. Create four region hubs.
+3. Create 36 unique aspect habitats.
+4. Add regional transitions.
+5. Add consequence flags.
+6. Add mementos/hub displays.
+7. Add dream/impossible rules.
+8. Verify all 50 rooms in headless/contract tests.
+
+## Phase I - Retheme arcade
+
+Port Stone Dash at feature parity and adapt collectibles, hazards, transformation items, palette logic, UI copy, and audio.
+
+## Phase J - Adaptive HUD
+
+1. Port center-clear edge UI.
+2. Port auto-fade.
+3. Port interaction wheel/lore/photo controls.
+4. Port phone portrait bottom sheets.
+5. Port landscape edge rails.
+6. Port tablet/desktop panes.
+7. Add safe-area and dynamic viewport handling.
+8. Run geometry tests across five viewport classes.
+
+## Phase K - Broad validation
+
+1. Run all focused tests.
+2. Run all 50-room expansion lifecycle tests.
+3. Run broad Playwright journey.
+4. Run five-class responsive matrix.
+5. Capture manual QA screenshots.
+6. Repair only proven failures.
+7. Re-run affected tests after repairs.
+
+## Phase L - Documentation and publication
+
+Update/create:
+
+- `README.md`
+- `OPERATIONAL_STATE.md`
+- asset provenance document
+- adaptation/architecture notes
+- test instructions
+- deployment instructions
+
+If the user supplied a writable GitHub destination and publication is authorized:
+
+1. verify repository identity
+2. verify branch
+3. inspect `git status`
+4. stage intended files only
+5. commit with a clear message
+6. push without force
+7. enable/configure GitHub Pages if required and permitted
+8. verify public route
+9. verify important JS/assets load from the live route
+
+Do not claim deployment merely because `git push` succeeded.
+
+---
+
+# 26. Naming cleanup
+
+The final project must not feel like Eevee Lab with labels crossed out.
+
+Perform a full terminology pass.
+
+Replace or adapt at minimum:
+
+- Eevee
+- Eeveelution
+- Pokemon
+- evolution terminology where inappropriate
+- species-specific abilities
+- species names
+- room names
+- region lore
+- Stone Dash title if needed
+- save keys
+- CSS ids/classes only when semantics require it; do not churn stable code identifiers gratuitously
+- README copy
+- attribution documents
+- test fixture labels
+- accessibility labels
+- Journal copy
+- photo score labels if renamed
+
+Do not remove neutral architecture names just for cosmetic purity.
+
+---
+
+# 27. Things you must not do
+
+- Do not reduce the project to a single room.
+- Do not reduce it to nine rooms.
+- Do not omit the 40-room expedition system.
+- Do not turn the UI into a full-screen dashboard.
+- Do not rebuild the project in React merely for convenience.
+- Do not add a bundler merely for convenience.
+- Do not silently upgrade Three.js.
+- Do not remove Stone Dash.
+- Do not remove photo mode.
+- Do not remove Chill Mode.
+- Do not remove direct pet/feed/toy/brush interactions.
+- Do not remove autonomous behavior or memory.
+- Do not remove persistence.
+- Do not remove accessibility behavior.
+- Do not remove responsive layout classes.
+- Do not serialize scenes into saves.
+- Do not reload heavy models every room.
+- Do not create multiple render loops.
+- Do not create one AudioContext per sound.
+- Do not animate globally shared materials in room-specific ways.
+- Do not invent canonical forms for the supplied character.
+- Do not accidentally ship Eevee/Pokemon assets into the new project.
+- Do not claim tests ran when they did not.
+- Do not claim visual QA when only source inspection occurred.
+- Do not claim Pages deployment until the live route is actually verified.
+- Do not force-push or rewrite repository history unless the user explicitly orders it and the environment is verified.
+
+---
+
+# 28. Completion report
+
+When finished, report in this exact high-level structure:
+
+## Reconstruction result
+
+- Project name:
+- Destination repository/path:
+- Source reference commit used:
+- Star character:
+- Nine aspect/form mapping:
+- Total rooms:
+- Core habitats:
+- Expedition regions:
+- Arcade mode:
+- Persistence key/schema:
+
+## Implemented systems
+
+Summarize actor, interaction, behavior/memory, multi-character, place, transformation/aspects, abilities, living world, audio, camera, UI, photo, discovery, expeditions, consequences, accessibility, and arcade.
+
+## Validation evidence
+
+List exact commands/tests actually run and their real results.
+
+Include:
+
+- focused tests
+- 50-room expansion test
+- broad browser journey
+- viewport matrix
+- console/page error count
+- manual screenshot/visual QA status
+
+## Deployment evidence
+
+If deployed, provide:
+
+- branch/commit
+- Pages status
+- live route checked
+- representative live assets checked
+
+If not deployed, say exactly what remains.
+
+## Known unverified items
+
+List anything not actually proven.
+
+## Git state
+
+- branch
+- final commit
+- pushed or not pushed
+- working tree clean or not
+
+Never replace evidence with phrases such as "should work" or "looks complete."
+
+---
+
+# 29. Definition of success
+
+Success is not "the new character appears in Eevee Lab."
+
+Success is:
+
+> A separate, polished, static Three.js character habitat project with the same system depth, world scale, interaction richness, room lifecycle discipline, responsive UI quality, persistence model, living-world behavior, observation systems, expedition architecture, playful modes, arcade subgame, accessibility, testing rigor, and deployment honesty as the verified EEvee Lab baseline - but authored so thoroughly around the supplied star that the result no longer depends on Eevee as a conceptual crutch.
+
+Begin by reading the supplied `STAR_CHARACTER` material and the canonical reference repository. Then execute the reconstruction through validation rather than stopping at a plan.
