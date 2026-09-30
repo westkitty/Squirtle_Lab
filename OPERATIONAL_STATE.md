@@ -2,8 +2,8 @@
 
 project_id: squirtle-lab
 project_name: Squirtle Lab
-revision: 1
-status: seeded
+revision: 2
+status: seeded / LM Arena build prompt ready
 
 ## Current baseline
 
@@ -12,6 +12,7 @@ status: seeded
 - Implementation state: not yet built; repository is seeded for reconstruction.
 - Reconstruction contract: `docs/EEVEE_LAB_CHARACTER_RECONSTRUCTION_HANDOFF.md`
 - Squirtle source archive: `assets/source/squirtle/Archive.zip`
+- Authoritative LM Arena build prompt: `docs/LM_ARENA_SQUIRTLE_LAB_BUILD_PROMPT.md`
 - Canonical reference project: `westkitty/eevee_lab`
 
 ## Active invariants
@@ -24,6 +25,8 @@ status: seeded
 - Do not claim implementation, tests, visual QA, Pages deployment, or runtime behavior until actually verified.
 
 ## Verified
+
+- The LM Arena build prompt is committed on `main` at `docs/LM_ARENA_SQUIRTLE_LAB_BUILD_PROMPT.md`.
 
 - The reconstruction contract is committed on `main`.
 - The Squirtle source archive is committed on `main` as the original ZIP payload.
